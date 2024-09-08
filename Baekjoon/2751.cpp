@@ -8,7 +8,6 @@ int main() {
     cin >> n;
     int num[n];
 
-
     for (int i = 0; i < n; i++){
         cin >> num[i];
     }
