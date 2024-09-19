@@ -32,7 +32,7 @@ void intothevoid(int d, string s){
         
         if (!check[i]){
             
-        if (d == 0 || checklarge(s[d - 1], i + '0', k[d - 1])){
+        if (d == 0 || checklarge(s[d - 1], i + '0', k[d - 1])){ //풀이 보고 참고한 부분, s의 마지막 element와 k의 마지막 element와 char 로 변경시킨 i의 값을 보고 어떤 값이 Large 한지 check하는 조건문
             
             check[i] = true;
             intothevoid(d + 1, s + to_string(i));
