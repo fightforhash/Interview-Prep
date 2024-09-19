@@ -5,3 +5,5 @@ Do not reuse without permission.
 
 # References
 Neetcode Pro 
+Myself
+https://www.acmicpc.net/
