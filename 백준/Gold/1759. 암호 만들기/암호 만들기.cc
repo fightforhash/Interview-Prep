@@ -18,10 +18,7 @@ bool isvowel(char z){
     return false;
 }
 
-
-
-
-void bt(int k, int x){ //k = 암호로 선택된 원소들의 갯수 x = x <= i <= n에서 선택하면 된다는 정보를 담는 변수(check 할수 있는 구간의 첫번째 위치)
+void bt(int k, int x){ //k = 암호로 선택된 원소들의 갯수 x = 선택할지 말지 결정해야 하는 인덱스
     
     if (k == L){ 
 
@@ -54,16 +51,14 @@ void bt(int k, int x){ //k = 암호로 선택된 원소들의 갯수 x = x <= i 
 
         }
         cout << '\n';
+        return;
     }
-
-    for (int i = x; i < C; i++){
-        if (!check[i]){
-            check[i] = true;
-            bt(k + 1, i + 1);
-            check[i] = false;
-        }
-    }
-    return;
+    if (x == C) return; 
+    check[x] = true;
+    bt(k + 1, x + 1);
+    check[x] = false;
+    bt(k, x + 1);
+    
 }
 
 int main(){
@@ -80,4 +75,4 @@ int main(){
     bt(0, 0);
     return 0;
 
-}
+};
