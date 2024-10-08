@@ -37,7 +37,7 @@ void bt(int h, int k, int d){ //h - 체력 d - 대미지 k - 구해낸 주민의
 }
 
 int main(){
-        cin.tie(0) -> sync_with_stdio(0);
+    cin.tie(0) -> sync_with_stdio(0);
 
     cin >> N >> K;
 
