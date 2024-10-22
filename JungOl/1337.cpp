@@ -8,50 +8,31 @@ int main(){
 
     int t[101][101];
     
-    for (int i = 1; i <= n; i++)  // Initialize with -1 to mark unfilled spaces
-        for (int j = 1; j <= n; j++)
-            t[i][j] = -1;
-
+    int m = n;
+    int x = -1, y = -1;
     int num = 0;
-    int x = 1, y = 1;
-    int d = 0;
-
-    for(int i = 1; i <= n * (n+1) / 2; i++){
-
-        t[x][y] = num;
-        num = (num + 1)%10;
-
-        if (d == 0){
-            if(x + 1 <= n && t[x+1][y] == -1){
-                x++;
-            }else{
-                d = 2;
-                y++;
+    
+    for (int i = 0; i < m; ++i) { //0부터 시작 -> 0인덱스부터 시작
+        for (int j = i; j < m; ++j) {
+            if (i % 3 == 0) { //빗변
+                x++; y++;  
+            } else if (i % 3 == 1) { // 밑변 
+                y--;  // Move left
+            } else if (i % 3 == 2) { // 높이
+                x--;  // Move up
             }
-        } else if (d == 2){
-            if(y + 1 <= n && t[x][y+1] == -1){
-                y++;
-            }else {
-                d = 1;
-                x--; y--;
-            }
-        } else if (d == 1){
-            if (x - 1 >= 1 && y - 1 >= 1 && t[x-1][y-1] == -1){
-                x--, y--;
-            }else{
-                d = 0;
-                x++;
-            }
-
+            t[x][y] = num++ % 10;  // 0-9까지 떄려박음
         }
     }
 
-    for (int i =1; i <= n; i++){
-            for(int j = 1; j <= i; j++){
-                cout << t[i][j] <<  " ";
-            }
-            cout << '\n';
+    // Print the triangular matrix
+    for (int i = 0; i < m; ++i) { //0인덱스가 코어니 0베이스 출력
+        for (int j = 0; j < i + 1; ++j) { //윗부분 0 출력하려면 i+1
+            cout << t[i][j] << " ";
         }
+        cout << '\n';  // Move to the next line after each row
+    }
+
     return 0;
 
 }
