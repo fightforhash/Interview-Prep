@@ -19,7 +19,7 @@ int main(){
         pos = s.find(koi, pos + 1);  
     }
 
-    // Find all occurrences of "IOI"
+    
     pos = s.find(ioi);
     while (pos != string::npos) {
         icount++;
