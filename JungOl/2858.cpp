@@ -1,34 +1,31 @@
 #include <iostream>
+#include <cstring>  // For strlen
 using namespace std;
 
-int paper[111][111];  
+const int MAX_SIZE = 100010;
+
+char s[MAX_SIZE];  // Input string
+int openCount = 0, totalPieces = 0;
+
+void solve() {
+    cin >> (s + 1); 
+
+    for (int i = 1; i <= strlen(s + 1); ++i) {
+        if (s[i] == ')' && s[i - 1] == '(') {
+            openCount--;                
+            totalPieces += openCount;  
+        } else if (s[i] == ')') {
+            openCount--;  // End of a rod
+            totalPieces++;  // Add one piece for the rod ending
+        } else if (s[i] == '(') {
+            openCount++;  // Start of a new rod
+        }
+    }
+
+    cout << totalPieces << '\n';  // Output the total number of pieces
+}
 
 int main() {
-    int n;
-    cin >> n;  
-    int sx, sy;
-    for (int i = 0; i < n; ++i) {
-        cin >> sx >> sy; 
-        // Mark the 10x10 area on the grid
-        for (int x = sx; x < sx + 10; ++x) {
-            for (int y = sy; y < sy + 10; ++y) {
-                paper[x][y] = 1;
-            }
-        }
-    }
-
-    int res = 0;  
-
-    
-    for (int i = 1; i <= 100; ++i) {
-        for (int j = 1; j <= 100; ++j) {
-            if (paper[i][j] == 1) {
-                res++;
-            }
-        }
-    }
-
-    cout << res << '\n';  
-
+    solve();  // Call the solve function
     return 0;
 }

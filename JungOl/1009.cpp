@@ -3,30 +3,32 @@
 using namespace std;
 
 int main(){
-    int s;
+    string s;
     int res = 0;
-    int num = 0;
-    int total = 0;
+    
+
     while(true){
-        
         cin >> s;
-
-        if (s == 0)
-            break;
-        num = 0;
-        total = 0;
-        while (s > 0){
-            num = (num * 10) + (s % 10);
-            total += s % 10;
-            s = s / 10;
+        if (s == "0") break;
+        
+        res = 0;
+        for (char ch: s){
+            res += ch - '0';
         }
-    cout << num << " " << total << '\n';
+        bool leading = true;
+        for (int i = s.size() - 1; i >= 0; i--){
+            if (leading && s[i] == '0'){
+                continue;
+            }
+            leading = false;
+            cout << s[i];
+        }
+        
+
+        cout << " " << res << '\n';
+
     } 
-    
+
     return 0;
-    
-    
+
 }
-
-    
-
