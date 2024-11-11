@@ -26,6 +26,7 @@ int main(){
 
     cout << bc.size() - cycstart;
     
+    
     return 0;
 
 
