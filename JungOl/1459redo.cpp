@@ -20,7 +20,7 @@ int main(){
     vector<int> p;
     for (int i = 1; i <= n; i++){
         for (int j = 1; j<=n; j++) visited[j] = false;
-            if (valid(i,i)) p.push_back(i);
+        if (valid(i,i)) p.push_back(i);
     }
 
     cout << p.size() << '\n'; 
