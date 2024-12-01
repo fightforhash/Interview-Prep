@@ -6,33 +6,37 @@ int A, B;
 string S; 
 
 char toChar(int d) {
-    if (d < 10) return d + '0';  // Convert to '0'-'9'
-    return d + 'A' - 10;         // Convert to 'A'-'Z'
+    if (d < 10) return d + '0';  //0-9
+    return d + 'A' - 10;         //a-z
 }
 
-void dToB(long long d) {
-    if (d < B) {
+long long aToD(string num, int base){
+    long long deval = 0;
+    for (char c : num){
+        if (c >= 'A'){
+            deval = deval * base + (c - 'A' + 10);
+        }else{
+            deval = deval * base + (c - '0');
+        }
+    }
+
+    return deval;
+
+}
+
+void dToB(long long d, int base) {
+    if (d < base) {
         cout << toChar(d);
         return;
     }
-    dToB(d / B);
-    cout << toChar(d % B);
+    dToB(d / base, base);
+    cout << toChar(d % base);
 }
 
 int main() {
     while (cin >> A >> S >> B && A) {  
-        long long d = 0;  
-
-        // Convert the input number from base A to decimal
-        for (char ch : S) {
-            if (ch >= 'A') {
-                d = d * A + (ch - 'A' + 10);  // For characters 'A'-'Z'
-            } else {
-                d = d * A + (ch - '0');       // For digits '0'-'9'
-            }
-        }
-
-        dToB(d);
+        long long deval = aToD(S, A);
+        dToB(deval, B);
         cout << '\n';
     }
 

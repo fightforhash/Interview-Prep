@@ -1,31 +1,42 @@
 #include <iostream>
 #include <string>
+#include <cctype>
+
 using namespace std;
 
-int main(){
-    string key, encryptedMessage;
+int main() {
+    string key, password;
+    cin >> key;          
+    cin.ignore();        
+    getline(cin, password); 
 
-    getline(cin, key);
-    getline(cin, encryptedMessage);
+    string alpha = "abcdefghijklmnopqrstuvwxyz";
 
-    char decrypt[26];
+    string answer = "";
 
-    for (int i = 0; i < 26; i++){
-        decrypt[i] = key[i];
-    }
-
-    for (char c: encryptedMessage){
-        if (c >= 'a' && c <= 'z'){
-            cout << decrypt[c - 'a'];
-        }else if (c >= 'A' && c <= 'Z'){
-            cout << char(decrypt[c - 'A'] - 'a' + 'A');
-        }else {
-            cout << c;
+    for (int i = 0; i < password.size(); i++) {
+        if (password[i] == ' ') { 
+            answer += ' ';
+        } else {
+            if (isupper(password[i])) { 
+                for (int j = 0; j < alpha.size(); j++) {
+                    if (tolower(password[i]) == alpha[j]) {
+                        answer += toupper(key[j]);
+                        break;
+                    }
+                }
+            } else { 
+                for (int k = 0; k < alpha.size(); k++) {
+                    if (password[i] == alpha[k]) {
+                        answer += key[k];
+                        break;
+                    }
+                }
+            }
         }
-
     }
 
-    cout << '\n';
-    return 0; 
+    cout << answer << endl; 
 
+    return 0;
 }

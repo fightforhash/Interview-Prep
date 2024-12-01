@@ -1,27 +1,28 @@
 #include <iostream>
-#include <string>
+#include <string.h>
 using namespace std;
+const int a = 1e6;
+int cnt = 0;
+int ans = 0;
 
 int main(){
 
-    string s;
-    int cnt = 0;
-    int ans = 0;
+    char s[a];
     cin >> s;
-
-    for (int i = 0; i < s.size(); i++){
-
-        if (s[i] == '(' && s[i] == '('){ // 막대기 시작
-            cnt++;
-        }
-
-        if (s[i] == '(' && s[i] == ')'){
-            ans += cnt;
-            i++;
-        }
-
-    }
-
-    cout << ans;
     
+    for (int i = 0; i < strlen(s); i++){
+
+        if (s[i] == '(' && s[i + 1] == '('){
+            cnt++; 
+        }
+        if (s[i] == '(' && s[i + 1] == ')'){
+            ans += cnt;
+        }
+        if (s[i] == ')' && s[i - 1] == ')'){
+            ans += 1;
+            cnt--;
+        }
+        
+    }
+    cout << ans;
 }
