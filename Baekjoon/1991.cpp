@@ -32,7 +32,6 @@ void InOrder(char node){
     InOrder(c[node].left);
     cout << node;
     InOrder(c[node].right);
-
 }
 
 void PostOrder(char node){
@@ -45,7 +44,7 @@ void PostOrder(char node){
     cout << node;
 }
 
-int main(){
+int main(){   
 
     cin >> n;
     char nod, lft, rht;

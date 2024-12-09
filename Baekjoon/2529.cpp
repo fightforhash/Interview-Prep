@@ -13,7 +13,7 @@ bool checklarge(int i, int j, char k){
     }else if (k == '>'){
         return i > j;
     }
-    return true;
+    return false;
 }
 
 void intothevoid(int d, string s){

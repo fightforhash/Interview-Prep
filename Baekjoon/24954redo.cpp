@@ -46,8 +46,6 @@ void backtrack(int depth){
 
 }
 
-
-
 int main(){
 
     cin >> n;

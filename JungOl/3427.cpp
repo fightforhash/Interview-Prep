@@ -6,7 +6,6 @@ using namespace std;
 int main() {
     int n;
     string arr;
-
     
     cin >> n >> arr;
 
@@ -32,7 +31,6 @@ int main() {
         }
     }
 
-   
     for (int i = n - 1; i >= 0; --i) {
         if (i == n - 1) {
             if (arr[i] == 'R') re = 1;
@@ -44,6 +42,7 @@ int main() {
             else be++;
         }
     }
+    
 
     // 최소 이동 횟수 계산
     int val = red - rs;

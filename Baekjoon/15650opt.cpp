@@ -1,23 +1,28 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
+
 bool table[9];
 int n, m;
 
-void bt(int k, int c) {
-    if (k == n+1 && c != m) return;
-    if (c == m) {
-        for (int i = 1; i <= n; ++i) if (table[i]) cout << i << ' ';
+void bt(int a, int b) {
+    if (a == n + 1 && b != m) {
+        return;
+    }
+    if (b == m) {
+        for (int c = 1; c <= n; ++c) {
+            if (table[c]) cout << c << ' ';
+        }
         cout << '\n';
         return;
     }
-    table[k] = true;
-    bt(k+1, c+1);
-    table[k] = false;
-    bt(k+1, c);
+    table[a] = true;
+    bt(a + 1, b + 1);
+    table[a] = false;
+    bt(a + 1, b);
 }
 
 int main() {
-    ios::sync_with_stdio(0); cin.tie(0);
+    cin.tie(0) -> sync_with_stdio(0);
     cin >> n >> m;
     bt(1, 0);
 }

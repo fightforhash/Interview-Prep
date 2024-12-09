@@ -11,10 +11,6 @@ int main(){
     while (n--){
         cin >> x >> y;
 
-        if (x < 0 || y < 0 || x + 10 > 100 || y + 10 > 100) {
-            continue;
-        }
-
         for (int i = y; i < y + 10; i++){
             for (int j = x; j < x + 10; j++){
                 if (!check[i][j]){
