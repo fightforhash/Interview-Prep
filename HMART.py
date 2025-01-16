@@ -151,7 +151,7 @@ def main():
         return
     
     # 조합 출력
-    print(f"\nBILLS used to reach ${BILL_TARGET} (excluding $100 & $2):")
+    print(f"\nBILLS used to reach ${BILL_TARGET} (excluding $100 & $50 & $2):")
     for d in sorted(bill_solution.keys(), reverse=True):
         print(f"  ${d:.2f}: {bill_solution[d]}")
     
