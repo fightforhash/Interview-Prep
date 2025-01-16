@@ -177,7 +177,7 @@ def main():
     leftover_coins_value = sum(d * leftover_coins[d] for d in leftover_coins)
     leftover_total = leftover_bills_value + leftover_coins_value
     
-    print(f"\nLeftover bills (including $100 & $2 not used at all):")
+    print(f"\nLeftover bills (including $100 & 50 & $2 not used at all):")
     for d in sorted(leftover_bills.keys(), reverse=True):
         if leftover_bills[d] > 0:
             print(f"  ${d:.2f}: {leftover_bills[d]}")
