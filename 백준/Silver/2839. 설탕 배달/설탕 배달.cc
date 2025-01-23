@@ -1,0 +1,36 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+using namespace std;
+
+int N;
+int inf = 9999999;
+vector<int> homo(N + 1);
+
+int dfs(int weight){
+    if (weight < 0) return inf;
+    
+    if (weight == 0) return 0;
+
+    if (homo[weight] != -1) {
+    return homo[weight];
+    }
+    int cost3 = dfs(weight - 3);
+    int cost5 = dfs(weight - 5);
+    homo[weight] =  min(cost3,cost5) + 1;
+    return homo[weight];
+}
+
+int main(){
+    cin.tie(0) -> sync_with_stdio(0);
+    cin >> N;
+    homo.assign(N+1 , -1);
+    int res = dfs(N);
+    if (res >= inf){
+        cout << -1;
+    }else{
+        cout << res;
+    }
+    return 0;
+
+}
