@@ -15,9 +15,7 @@ int dfs(int weight){
     if (homo[weight] != -1) {
     return homo[weight];
     }
-    int cost3 = dfs(weight - 3);
-    int cost5 = dfs(weight - 5);
-    homo[weight] =  min(cost3,cost5) + 1;
+    homo[weight] =  min(dfs(weight - 3) + 1, dfs(weight - 5) + 1);
     return homo[weight];
 }
 
