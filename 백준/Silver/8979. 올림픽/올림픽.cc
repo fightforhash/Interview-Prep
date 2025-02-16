@@ -9,7 +9,6 @@ struct Country{
     int gold;
     int silver;
     int bronze;
-
 };
 
 bool compare(Country a, Country b) {
@@ -25,25 +24,27 @@ int main(){
 
     vector<Country> cty(n);
     for (int i = 0; i < n; i++){
-        cty[i].number = i + 1;
-        cin >> cty[i].gold >> cty[i].silver >> cty[i].bronze;
+        
+        cin >> cty[i].number >> cty[i].gold >> cty[i].silver >> cty[i].bronze;
     }
 
     sort(cty.begin(), cty.end(), compare);
 
-    int rank = 0; 
+    int rank = 1; 
+    int targetRank =  0;
     for (int i = 0; i < n; ++i) {
         if (i > 0 && cty[i].gold == cty[i - 1].gold &&
             cty[i].silver == cty[i - 1].silver &&
             cty[i].bronze == cty[i - 1].bronze) {
-            continue;
         }else{
             rank = i + 1;
         }
         if (cty[i].number == k) {
-            cout << rank << endl;
+            targetRank = rank;
             break;
         }
         
     }
+
+    cout << targetRank;
 }
